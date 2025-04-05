@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlusCircle, MinusCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface FaqItemProps {
   question: string;
@@ -134,13 +135,15 @@ const FaqPage = () => {
           <h2 className="text-2xl font-bold text-gray-900">Still have questions?</h2>
           <p className="mt-4 text-gray-600">We're here to help. Contact our support team for assistance.</p>
           <div className="mt-6">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Contact Support
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Contact Support
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>
