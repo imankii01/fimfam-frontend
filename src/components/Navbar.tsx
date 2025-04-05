@@ -38,7 +38,9 @@ const Navbar = () => {
             <NavLink href="#features">Features</NavLink>
             <NavLink href="#pricing">Pricing</NavLink>
             <NavLink href="#testimonials">Testimonials</NavLink>
-            <NavLink href="#faq">FAQ</NavLink>
+            <Link to="/faq" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+              FAQ
+            </Link>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-4"
