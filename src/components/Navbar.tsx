@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Wallet } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,9 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Determine if we're on the homepage
+  const isHomePage = location.pathname === '/';
 
   return (
     <motion.nav
@@ -35,9 +39,25 @@ const Navbar = () => {
             </Link>
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#features">Features</NavLink>
-            <NavLink href="#pricing">Pricing</NavLink>
-            <NavLink href="#testimonials">Testimonials</NavLink>
+            {isHomePage ? (
+              <>
+                <NavLink href="#features">Features</NavLink>
+                <NavLink href="#pricing">Pricing</NavLink>
+                <NavLink href="#testimonials">Testimonials</NavLink>
+              </>
+            ) : (
+              <>
+                <Link to="/#features" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                  Features
+                </Link>
+                <Link to="/#pricing" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                  Pricing
+                </Link>
+                <Link to="/#testimonials" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                  Testimonials
+                </Link>
+              </>
+            )}
             <Link to="/faq" className="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
               FAQ
             </Link>
